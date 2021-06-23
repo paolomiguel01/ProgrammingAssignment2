@@ -1,26 +1,29 @@
+## In order to get the inverse of matrix, you need to follow this procedure
+
 makeCacheMatrix <- function(z = matrix()) {
-  Dell <- NULL
+  inv <- NULL
   set <- function(x) {
     z <<- x
-    Dell <<- NULL
+    inv <<- NULL
   }  
   get <- function() z
-  setmean <- function(mean) Dell <<- inverse
-  getmean <- function() Dell
+  setinverse <- function(mean) inv <<- inverse
+  getinverse <- function() inv
   list (set = set, get = get,
-       setmean = setmean,
-       getmean = getmean)
+       setinverse = setinverse,
+       getinverse = getinverse)
 }
 
+## To compute the value of the inverse of the matrix returned by the makeCacheMatrix above
+
 cacheSolve <- function(z, ...) {
-  Dell <- z$getinverse()
-  if (!is.null(Dell)) {
+  inv <- z$getinverse()
+  if (!is.null(inv)) {
     message("getting cached data")
-    return(Dell)
+    return(inv)
   }
   data <- z$get()
-  Dell <- solve(data,...)
-  z$setinverse(Dell)
-  Dell
-  
+  inv <- solve(data,...)
+  z$setinverse(inv)
+  inv  
 } 
