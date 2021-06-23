@@ -22,4 +22,5 @@ cacheSolve <- function(z, ...) {
   Dell <- solve(data,...)
   z$setinverse(Dell)
   Dell
+  
 } 
